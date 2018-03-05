@@ -4,6 +4,8 @@
 using System;
 using System.Text;
 using WebAssembly;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace MonoSanityClient
 {
