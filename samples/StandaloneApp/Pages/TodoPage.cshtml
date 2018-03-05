@@ -1,0 +1,29 @@
+﻿
+<h1>Todo list (@todoItems.Count(item => !item.IsDone))</h1>
+
+<input placeholder="New Item" @bind(newTodoItem) />
+<button @onclick(AddNewItem) >Add</button>
+<ul>
+    @foreach(var item in todoItems)
+    {
+        <li>
+            @item.Text
+            <input type="checkbox"  @bind(item.IsDone)/>
+        </li>
+        
+    }
+</ul>
+
+@functions
+{
+    string newTodoItem = String.Empty;
+
+    List<Todo> todoItems = TodoManager.GetAllTodos();
+
+    void AddNewItem()
+    {
+        todoItems.Add(new Todo { Text = newTodoItem });
+        newTodoItem = String.Empty;
+        //persist data...
+    }
+}
